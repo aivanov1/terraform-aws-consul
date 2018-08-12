@@ -41,11 +41,8 @@ resource "aws_autoscaling_group" "autoscaling_group" {
     },
     "${var.tags}"
   ]
-}
 
-resource "aws_autoscaling_attachment" "consul-asg-tg-attachment" {
-  autoscaling_group_name = "${aws_autoscaling_group.autoscaling_group.name}"
-  alb_target_group_arn   = "${var.target_group_arn}"
+  target_group_arns = ["${var.target_group_arns}"]
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
